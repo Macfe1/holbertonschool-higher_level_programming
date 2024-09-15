@@ -10,6 +10,6 @@ try:
     if cut_the_number is not None:
         print(f"Float: {cut_the_number:.2f}")
     else:
-        print("A type other than float is not allowed.")
+        print("ValueError: Unknown format code 'f' for object of type 'str'")
 except (TypeError, ValueError) as print_err:
     print (f"Error to print: {print_err}")
