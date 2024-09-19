@@ -7,7 +7,7 @@ last_dig = abs(number) % 10
 if number < 0:
     last_dig = -last_dig
 
-print(f"Last digit of {number} is {last_dig} ", end = "")
+print(f"Last digit of {number} is {last_dig}", end=" ")
 
 if last_dig > 5:
     print("and is greater than 5")
