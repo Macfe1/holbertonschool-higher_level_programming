@@ -4,5 +4,5 @@ for first_number in range(10):
         print(
                 "{}{}".format(first_number, second_number),
                 end=", " if not (first_number == 8 and second_number == 9)
-                else ""
+                else "\n"
                     )
