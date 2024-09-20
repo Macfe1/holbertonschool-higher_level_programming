@@ -2,4 +2,3 @@
 def pow(a, b):
     potencia = a ** b
     return potencia
-
