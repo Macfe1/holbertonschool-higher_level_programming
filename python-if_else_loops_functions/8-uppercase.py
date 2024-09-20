@@ -6,4 +6,4 @@ def uppercase(str):
         if to_upper > 96 and to_upper < 123:
             to_upper = to_upper - 32
         new_str += chr(to_upper)
-    print(f"{new_str}")
+    print("{}".format(new_str))
