@@ -10,4 +10,5 @@ def fizzbuzz():
         elif numero % 5 == 0:
             print("Buzz", end= " ")
         
-        print(numero, end=" ")
+        else:
+            print(numero, end=" ")
