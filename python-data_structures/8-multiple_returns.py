@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 def multiple_returns(sentence):
-    sentence = ("At school, I learnt C!")
     long = len(sentence)
 
     if long > 0:
