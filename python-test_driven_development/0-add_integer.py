@@ -1,9 +1,17 @@
 #!/usr/bin/python3
+"""
+This module provides a function to add two integers
+Or to substractif one of the parameters is negative
+
+"""
+
+
 def add_integer(a, b=98):
+
     """
     Add two integer.
 
-    The fucntion take two parameters to adds the together.
+    The fucntion take two parameters and adds the together.
     If one of the parameters is not float or int a TypeError will be raised.
     If the parameters are float will be casted to an integer and the final step
     is provide the sum or a substraction in the situation that
