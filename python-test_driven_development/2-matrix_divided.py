@@ -18,15 +18,18 @@ def matrix_divided(matrix, div):
     Return:
     a new matrix wiht the result of the division
     """
-
-    if not isinstance(matrix, list):
-            raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+    if not isinstance(matrix, list) or \
+            not all(isinstance(row, list) for row in matrix):
+        raise TypeError("matrix must be a matrix\
+                        (list of lists) of integers/floats")
     for row in matrix:
         if not isinstance(row, list):
-            raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+            raise TypeError("matrix must be a \
+                            matrix (list of lists) of integers/floats")
         for number in row:
             if not isinstance(number, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a \
+                                matrix (list of lists) of integers/floats")
     row_length = len(matrix[0])
     for rows in matrix[1:]:
         if len(row) != row_length:
@@ -41,5 +44,8 @@ def matrix_divided(matrix, div):
     for row in matrix:
         new_row = [round(number / div, 2) for number in row]
         new_matrix.append(new_row)
-    
     return new_matrix
+
+
+if __name__ == "__main__":
+    print(matrix_divided([[1, 2, 3]], 3.0))
