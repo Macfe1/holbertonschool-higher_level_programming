@@ -1,0 +1,17 @@
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+>>> text_indentation("Hola. ¿Cómo estás? Estoy bien: gracias.")
+Hola.
+¿Cómo estás?
+Estoy bien:
+gracias.
+>>> text_indentation("No hay puntuación aquí")
+No hay puntuación aquí
+>>> text_indentation("Espacios múltiples:   después:    puntuación.    Y: aquí.")
+Espacios múltiples:
+después:
+puntuación.
+Y:
+aquí.
+>>> text_indentation("Los espacios finales deben ser eliminados.   ")
+Los espacios finales deben ser eliminados.
+>>> text_indentation("")
