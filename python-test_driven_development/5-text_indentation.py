@@ -21,16 +21,20 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    for symbol in '.?:':
-        text = text.replace(symbol, symbol + "\n")
+    result = ""
 
-    lines_divided = [
-            line.strip() for line in text.splitlines() if line.strip()
-    ]
+    i = 0
 
-    for line in lines_divided:
-        print(line, end="")
-
+    while i < len(text):
+        result += text[i]
+        if text[i] in ".?:":
+            result += "\n\n"
+            i += 1
+            while i < len(text) and text[i] == ' ':
+                i += 1
+            continue
+        i += 1
+    print(result.strip(), end='') 
 
 if __name__ == "__main__":
-    text_indentation("Holberton School")
+    text_indentation("Holberton?School")
