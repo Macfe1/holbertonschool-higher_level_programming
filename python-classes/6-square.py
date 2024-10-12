@@ -50,8 +50,8 @@ class Square:
         self.__size = value
 
     @property
-    """get the number of psotions before the square in thex and y"""
     def position(self):
+        """Get the position of the square."""
         return self.__position
 
     @position.setter
