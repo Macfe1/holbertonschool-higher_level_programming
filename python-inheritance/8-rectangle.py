@@ -39,7 +39,24 @@ class BaseGeometry:
         raise Exception("area() is not implemented")
     
 class Rectangle(BaseGeometry):
+    """
+    A class representing a rectangle that inherits from BaseGeometry.
+
+    This class uses the integer_validator method from BaseGeometry
+    to ensure that the width and height are positive integers.
+    """
     def __init__(self, width, height):
+        """
+        Initializes a new Rectangle instance.
+
+        Args:
+            width (int): The width of the rectangle. Must be a positive integer.
+            height (int): The height of the rectangle. Must be a positive integer.
+
+        Raises:
+            TypeError: If width or height is not an integer.
+            ValueError: If width or height is less than or equal to zero.
+        """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
 
