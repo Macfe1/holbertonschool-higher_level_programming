@@ -37,7 +37,8 @@ class BaseGeometry:
         method that raise and exception with a message
         """
         raise Exception("area() is not implemented")
-    
+
+
 class Rectangle(BaseGeometry):
     """
     A class representing a rectangle that inherits from BaseGeometry.
@@ -50,8 +51,11 @@ class Rectangle(BaseGeometry):
         Initializes a new Rectangle instance.
 
         Args:
-            width (int): The width of the rectangle. Must be a positive integer.
-            height (int): The height of the rectangle. Must be a positive integer.
+            width (int): The width of the rectangle.
+            Must be a positive integer.
+
+            height (int): The height of the rectangle.
+            Must be a positive integer.
 
         Raises:
             TypeError: If width or height is not an integer.
@@ -62,3 +66,7 @@ class Rectangle(BaseGeometry):
 
         self.__width = width
         self.__height = height
+
+
+if __name__ == "__main__":
+    print(issubclass(Rectangle, BaseGeometry))
