@@ -37,12 +37,3 @@ class BaseGeometry:
         method that raise and exception with a message
         """
         raise Exception("area() is not implemented")
-
-
-if __name__ == "__main__":
-   bg = BaseGeometry()
-   
-   try:
-       bg.integer_validator("age", False)  # Esto debe lanzar un TypeError
-   except Exception as e:
-       print("[{}] {}".format(e.__class__.__name__, e))
