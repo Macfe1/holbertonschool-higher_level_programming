@@ -36,10 +36,44 @@ Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-#Test with a tupla instead an int
+#Test with a tuple instead an int
 >>> bg = BaseGeometry()
 >>> try:
 ...     bg.integer_validator("age", (4,))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] age must be an integer
+
+#Test with a list as second argument
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("age", [3])
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] age must be an integer
+
+#Test with a boolean
+>>> bg = BaseGeometry()
+>>> try:
+...      bg.integer_validator("age", True)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+
+#Test with a set
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("age", {3, 4})
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] age must be an integer
+
+#Test with a None
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("age", None)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 ...
