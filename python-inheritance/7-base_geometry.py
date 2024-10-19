@@ -35,3 +35,9 @@ class BaseGeometry:
         method that raise and exception with a message
         """
         raise Exception("area() is not implemented")
+
+
+if __name__ == "__main__":
+    BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    bg = BaseGeometry()
+    bg.integer_validator("my_int")
