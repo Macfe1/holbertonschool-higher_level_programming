@@ -35,3 +35,20 @@ TypeError: my_int must be an integer
 Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+#Test with a tupla instead an int
+>>> bg = BaseGeometry()
+>>> try:
+...     bg.integer_validator("age", (4,))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] age must be an integer
+
+#Test the method area
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
