@@ -25,6 +25,8 @@ class BaseGeometry:
         ValueError:
             If value is negative or cero
         """
+        if type(value) is bool:
+            raise TypeError(f"{name} must be an integer")
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
@@ -38,6 +40,9 @@ class BaseGeometry:
 
 
 if __name__ == "__main__":
-    BaseGeometry = __import__('7-base_geometry').BaseGeometry
-    bg = BaseGeometry()
-    bg.integer_validator("my_int")
+   bg = BaseGeometry()
+   
+   try:
+       bg.integer_validator("age", False)  # Esto debe lanzar un TypeError
+   except Exception as e:
+       print("[{}] {}".format(e.__class__.__name__, e))
