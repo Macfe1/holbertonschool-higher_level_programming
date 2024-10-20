@@ -1,4 +1,18 @@
 #!/usr/bin/python3
+"""
+Module for geometric shapes
+using abstract base classes.
+
+Defines `Shape`, `Circle`, and
+`Rectangle` classes, with a `shape_info` function
+to print area and perimeter of shapes.
+
+Classes:
+    - Shape, Circle, Rectangle
+
+Function:
+    - shape_info
+"""
 from abc import ABC, abstractmethod
 import math
 
