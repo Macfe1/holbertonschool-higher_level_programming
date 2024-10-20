@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines a class Square that inherits from Rectangle.
+This module defines a class Square
+that inherits from Rectangle.
 """
 
 
@@ -13,17 +14,15 @@ class Square(Rectangle):
     """
 
     def __init__(self, size):
-    """
-    Initializes a new Square instance.
-    
-    Args:
-        size (int): The size of the square.
-        Must be a positive integer.
-
-    Raises:
-        TypeError: If size is not an integer.
-        ValueError: If size is less than or equal to zero.
-    """
+        """
+        Initializes a new Square instance.
+        Args:
+            size (int): The size of the square.
+            Must be a positive integer.
+        Raises:
+            TypeError: If size is not an integer.
+                ValueError: If size is less than or equal to zero.
+        """
         self.integer_validator("size", size)
         super().__init__(size, size)
         self.__size = size
