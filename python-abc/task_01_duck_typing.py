@@ -85,7 +85,7 @@ def shape_info(object_o):
         object_o (Shape): The shape object (Circle or Rectangle) to calculate.
     """
     print("Area: {}".format(object_o.area()))
-    print(f"Perimeter: {}".format(object_o.perimeter()))
+    print("Perimeter: {}".format(object_o.perimeter()))
 
 
 if __name__ == "__main__":
