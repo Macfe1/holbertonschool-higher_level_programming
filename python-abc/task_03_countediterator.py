@@ -29,7 +29,7 @@ class CountedIterator:
         self.iterator = iter(list_iter)
         self.counter = 0
 
-    def getcount(self):
+    def get_count(self):
         """
         Returns the number of items that have been iterated.
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     try:
         while True:
             item = next(counted_iter)
-            print(f"Got {item}, total {counted_iter.getcount()}\
+            print(f"Got {item}, total {counted_iter.get_count()}\
                     items iterated.")
     except StopIteration:
         print("No more items.")
