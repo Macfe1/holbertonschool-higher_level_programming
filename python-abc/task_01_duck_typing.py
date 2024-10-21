@@ -44,7 +44,7 @@ class Circle(Shape):
     """
     A class representing a circle.
     """
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         self.radius = radius
 
     def area(self):
@@ -66,7 +66,7 @@ class Rectangle(Shape):
     """
     A class representing a Rectangle
     """
-    def __init__(self, width, height):
+    def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
 
