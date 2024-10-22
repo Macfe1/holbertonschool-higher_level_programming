@@ -45,6 +45,8 @@ class Circle(Shape):
     A class representing a circle.
     """
     def __init__(self, radius=0):
+        if radius < 0:
+            radius *= -1
         self.radius = radius
 
     def area(self):
