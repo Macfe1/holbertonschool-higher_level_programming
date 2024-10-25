@@ -20,9 +20,8 @@ def from_pylist_to_jsonlist():
 
     except FileNotFoundError:
         items = []
-        print(items)
 
-    items.append(sys.argv[1:])
+    items.extend(sys.argv[1:])
     save_to_json_fl(items, "add_item.json")
 
 
