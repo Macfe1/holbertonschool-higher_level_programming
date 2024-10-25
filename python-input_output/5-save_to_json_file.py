@@ -3,6 +3,7 @@
 This module provides a function to save a Python object
 to a file in JSON format.
 """
+import json
 
 
 def save_to_json_file(my_obj, filename):
@@ -15,4 +16,4 @@ def save_to_json_file(my_obj, filename):
         which the JSON data will be written.
     """
     with open(filename, "w") as file:
-        json.dump(my_obj, filename)
+        json.dump(my_obj, file)
