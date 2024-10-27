@@ -46,3 +46,13 @@ class Student:
                 if iterator in self.__dict__:
                     new_dictionary[iterator] = self.__dict__[iterator]
             return new_dictionary
+
+    def reload_from_json(self, json):
+        """
+        Replace all attributes of the Student instance.
+
+        Args:
+            json (dict): A dictionary containing the attributes to set.
+        """
+        for key, value in json.items():
+            setattr(self, key, value)
