@@ -13,12 +13,12 @@ def serialize_to_xml(dictionary, filename):
     root = ET.Element("data")
 
     for key, value in dictionary.items():
-        item = ET.SubElement(root, "key")
+        item = ET.SubElement(root, key)
         item.text = str(value)
 
     tree = ET.ElementTree(root)
     with open(filename, "wb") as xml_File:
-        tree.write(xml_file)
+        tree.write(xml_File)
 
 
 def deserialize_from_xml(filename):
