@@ -6,7 +6,7 @@ import csv
 def fetch_and_print_posts():
     response = requests.get("https://jsonplaceholder.typicode.com/posts")
 
-    print(f"Status code:{response.status_code}")
+    print(f"Status Code:{response.status_code} ")
 
     if response.status_code == 200:
         response_json = response.json()
@@ -30,7 +30,7 @@ def fetch_and_save_posts():
             }
             posts_data.append(new_dict)
 
-        with open("posts.csv", "w", newline="") as file_csv:
+        with open("posts.csv", mode="w", newline="") as file_csv:
             writer = csv.DictWriter(
                     file_csv, fieldnames=["id", "title", "body"])
             writer.writeheader()
