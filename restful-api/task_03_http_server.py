@@ -9,7 +9,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"Simple API")
+            self.wfile.write(b"Hello, this is a simple API!")
 
 
         elif self.path == "/data":
@@ -36,8 +36,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(
-                    b"404 Not Found: The requested resource was not found.")
+            self.wfile.write(b"Endpoint not found")
 
 
 server_address = ('localhost', 8000)
