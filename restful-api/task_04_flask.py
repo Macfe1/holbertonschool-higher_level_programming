@@ -12,7 +12,7 @@ def home():
 
 @app.route('/data')
 def usernames():
-    if not users:
+    if not dictionary_usr:
         return jsonify([])
     username_list = list(dictionary_usr.keys())
     return jsonify(username_list)
@@ -26,7 +26,7 @@ def okay_status():
 @app.route('/users/<username>')
 def username_funct(username):
 
-    usern = usern.get(username)
+    usern = dictionary_usr(username)
 
     if usern:
         return jsonify(usern)
@@ -36,7 +36,7 @@ def username_funct(username):
 
 
 @app.route('/add_user', methods=['POST'])
-def Post_req():
+def post_req():
     data = request.get_json()
 
     if not data or "username" not in data:
