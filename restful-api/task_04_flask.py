@@ -54,7 +54,7 @@ def Post_req():
 
     return jsonify({
         "message": "User added successfully!",
-        "user": username,            }
+        "user": username,
         }), 201
 
 
