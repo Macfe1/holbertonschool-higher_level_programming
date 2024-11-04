@@ -16,9 +16,7 @@ dictionary_usr = {
 
 @app.route('/data')
 def usermames():
-    for iter_dict in dictionary_usr:
-        username_list.append(iter_dict)
-
+    username_list = list(dictionary_usr.keys())
     return jsonify(username_list)
 
 
