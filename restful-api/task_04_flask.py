@@ -16,8 +16,6 @@ dictionary_usr = {
 
 @app.route('/data')
 def usermames():
-    username_list = []
-
     for iter_dict in dictionary_usr:
         username_list.append(iter_dict)
 
@@ -26,7 +24,7 @@ def usermames():
 
 @app.route('/status')
 def okay_status():
-    return jsonify({"Status": "OK"})
+    return "OK"
 
 
 @app.route('/users/<username>')
@@ -67,4 +65,4 @@ def Post_req():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
