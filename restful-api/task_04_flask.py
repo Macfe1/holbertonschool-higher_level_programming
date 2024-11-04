@@ -54,12 +54,7 @@ def Post_req():
 
     return jsonify({
         "message": "User added successfully!",
-        "user": {
-            "username": username,
-            "name": data.get('name'),
-            "age": data.get('age'),
-            "city": data.get('city')
-            }
+        "user": username,            }
         }), 201
 
 
