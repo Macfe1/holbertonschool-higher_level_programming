@@ -43,24 +43,24 @@ def basic_protected():
 
 @jwt.unauthorized_loader
 def unauthorized_err(err):
-    return jsonify({"error": "Token faltante o inválido"}), 401
+    return jsonify({"error": "Missing or invalid token"}), 401
 
 
 @jwt.invalid_token_loader
 def invalid_token_err(err):
-    return jsonify({"error": "Token inválido"}), 401
+    return jsonify({"error": "Invalid token"}), 401
 
 
 @jwt.expired_token_loader
 def expired_token_err(err):
-    return jsonify({"error": "El token ha expirado"}), 401
+    return jsonify({"error": "Token has expired"}), 401
 
 
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     if not data or not data.get("username") or not data.get("password"):
-        return jsonify({"error": "Faltan el nombre de usuario o la contraseña"}), 400
+        return jsonify({"error": "Invalid credentials"}), 401
 
 
     username = data.get("username")
@@ -86,8 +86,8 @@ def jwt_protected():
 def admin_only():
     current_user = get_jwt_identity()
     if current_user['role'] != 'admin':
-        return jsonify({"error": "Se requiere acceso de administrador"}), 403
-    return jsonify(message="Acceso de Administrador: Concedido")
+        return jsonify({"error": "Admin access required"}), 403
+    return "Admin Access: Granted"
 
 
 if __name__ == '__main__':
