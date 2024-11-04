@@ -68,7 +68,7 @@ def login():
 
     access_tkn = create_access_token(
             identity={"username": username, "role": user["role"]})
-    return jsonify(access_tkn=access_token)
+    return jsonify(access_token=access_tkn)
 
 
 @app.route('/jwt-protected', methods=['GET'])
