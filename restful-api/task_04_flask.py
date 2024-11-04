@@ -27,7 +27,7 @@ def okay_status():
 def username_funct(username):
 
     usern = dictionary_usr.get(username)
-    
+
     if usern:
         return jsonify(usern)
     else:
@@ -44,7 +44,7 @@ def post_req():
     username = data.get('username')
 
     if username in dictionary_usr:
-        return jsonify({"error": "Username already exists"}), 400
+        return jsonify({"error": "User already exists"}), 400
 
     user_data = {
             "username": username,
