@@ -2,20 +2,18 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+dictionary_usr = {}
+
 
 @app.route('/')
 def home():
     return "Welcome to the Flask API!"
 
 
-dictionary_usr = {
-        "macfe": {"name": "Mafe", "age": 23, "city": "Bogota"},
-        "pablo": {"name": "Pablo", "age": 20, "city": "Los Angeles"}
-        }
-
-
 @app.route('/data')
-def usermames():
+def usernames():
+    if not users:
+        return jsonify([])
     username_list = list(dictionary_usr.keys())
     return jsonify(username_list)
 
@@ -27,8 +25,11 @@ def okay_status():
 
 @app.route('/users/<username>')
 def username_funct(username):
-    if username in dictionary_usr:
-        return jsonify(dictionary_usr[username])
+
+    usern = usern.get(username)
+
+    if usern:
+        return jsonify(usern)
 
     else:
         return jsonify({"error": "User not found"}), 404
@@ -37,12 +38,12 @@ def username_funct(username):
 @app.route('/add_user', methods=['POST'])
 def Post_req():
     data = request.get_json()
-    
+
     if not data or "username" not in data:
         return jsonify({"error": "Username is required"}), 400
 
     username = data.get('username')
-    
+
     if username in dictionary_usr:
         return jsonify({"error": "The user already exists"}), 400
 
@@ -53,8 +54,8 @@ def Post_req():
             }
 
     return jsonify({
-        "message": "User added successfully!",
-        "user": username,
+        "message": "User added",
+        "user": dictionary_usr[username],
         }), 201
 
 
