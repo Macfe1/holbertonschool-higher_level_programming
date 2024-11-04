@@ -27,45 +27,18 @@ users = {
             }
         }
 
+
 @auth.verify_password
 def verify_password(username, password):
     user = users.get(username)
     if user and check_password_hash(user["password"], password):
         return user
 
+
 @app.route('/basic-protected', methods=['GET'])
 @auth.login_required
 def basic_protected():
     return "Basic Auth: Access Granted"
-
-
-@app.route('/login', methods=['POST'])
-def login():
-    username = request.json.get('username')
-    password = request.json.get('password')
-
-    user = users.get(username)
-    if user and check_password_hash(user['password'], password):
-        access_token = create_access_token(
-                identity={"username": username, "role": user['role']})
-        return jsonify(access_token=access_token), 200
-    return jsonify({"error": "Credenciales inválidas"}), 401
-
-
-@app.route('/jwt-protected', methods=['GET'])
-@jwt_required()
-def jwt_protected():
-    current_user = get_jwt_identity()
-    return jsonify(message="JWT Auth: Access Granted", user=current_user)
-
-
-@app.route('/admin-only', methods=['GET'])
-@jwt_required()
-def admin_only():
-    current_user = get_jwt_identity()
-    if current_user['role'] != 'admin':
-        return jsonify({"error": "Se requiere acceso de administrador"}), 403
-    return jsonify(message="Acceso de Administrador: Concedido")
 
 
 @jwt.unauthorized_loader
@@ -83,14 +56,34 @@ def expired_token_err(err):
     return jsonify({"error": "El token ha expirado"}), 401
 
 
-@jwt.revoked_token_loader
-def revoked_tkn_error(err):
-    return jsonify({"error": "El token ha sido revocado"}), 401
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+    user = users.get(username)
+
+    if not user or not check_password_hash(user["password"], password):
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    access_tkn = create_access_token(
+            identity={"username": username, "role": user["role"]})
+    return jsonify(access_tkn=access_token)
 
 
-@jwt.needs_fresh_token_loader
-def needs_fresh_token_error(err):
-    return jsonify({"error": "Se requiere un token fresco"}), 401
+@app.route('/jwt-protected', methods=['GET'])
+@jwt_required()
+def jwt_protected():
+    return "JWT Auth: Access Granted"
+
+
+@app.route('/admin-only', methods=['GET'])
+@jwt_required()
+def admin_only():
+    current_user = get_jwt_identity()
+    if current_user['role'] != 'admin':
+        return jsonify({"error": "Se requiere acceso de administrador"}), 403
+    return jsonify(message="Acceso de Administrador: Concedido")
 
 
 if __name__ == '__main__':
