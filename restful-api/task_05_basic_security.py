@@ -15,18 +15,11 @@ auth = HTTPBasicAuth()
 jwt = JWTManager(app)
 
 users = {
-        "user1": {
-            "username": "user1",
-            "password": generate_password_hash("password"),
-            "role": "user"
-            },
-        "admin1": {
-            "username": "admin1",
-            "password": generate_password_hash("password"),
-            "role": "admin"
-            }
-        }
-
+    "user1": {"username": "user1", "password": generate_password_hash(
+        "password"), "role": "user"},
+    "admin1": {"username": "admin1", "password": generate_password_hash(
+        "password"), "role": "admin"}
+}
 
 @auth.verify_password
 def verify_password(username, password):
@@ -70,9 +63,9 @@ def login():
     if not user or not check_password_hash(user["password"], password):
         return jsonify({"error": "Invalid credentials"}), 401
 
-    access_tkn = create_access_token(
+    access_token = create_access_token(
             identity={"username": username, "role": user["role"]})
-    return jsonify(access_token=access_tkn)
+    return jsonify(access_token=access_token)
 
 
 @app.route('/jwt-protected', methods=['GET'])
@@ -91,4 +84,4 @@ def admin_only():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000)
