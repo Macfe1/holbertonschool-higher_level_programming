@@ -42,12 +42,12 @@ def username_funct(username):
 def Post_req():
     data = request.get_json()
     username = data.get('username')
-
-    if 'username' not in data:
+    
+    if username is None:
         return jsonify({"error": "Username is required"}), 400
 
-    if data['username'] in dictionary_usr:
-        return jsonify({"error": "The user already exist"}), 400
+    if username in dictionary_usr:
+        return jsonify({"error": "The user already exists"}), 400
 
     dictionary_usr[username] = {
             "name": data.get('name'),
