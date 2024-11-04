@@ -5,6 +5,17 @@ import sys
 
 
 def list_states(username, password, db_name):
+    """
+    Connects to the MySQL database and lists all states ordered by id.
+
+    Args:
+        username (str): The username for the database connection.
+        password (str): The password for the database connection.
+        db_name (str): The name of the database to connect to.
+
+    Returns:
+        None: Prints the states to the console.
+    """
 
     db = MySQLdb.connect(
             host="localhost",
@@ -19,7 +30,7 @@ def list_states(username, password, db_name):
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
     states = cursor.fetchall()
-    
+
     for state in states:
         print(state)
 
@@ -33,3 +44,6 @@ if __name__ == "__main__":
         password = sys.argv[2]
         db_name = sys.argv[3]
         list_states(username, password, db_name)
+
+    else:
+        print("Usage: ./script.py username password db_name")
