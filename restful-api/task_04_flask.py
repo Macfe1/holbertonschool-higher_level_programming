@@ -43,9 +43,6 @@ def post_req():
 
     username = data.get('username')
 
-    if username in dictionary_usr:
-        return jsonify({"error": "User already exists"}), 400
-
     user_data = {
             "username": username,
             "name": data.get("name", ""),
