@@ -59,6 +59,10 @@ def expired_token_err(err):
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
+    if not data or not data.get("username") or not data.get("password"):
+        return jsonify({"error": "Faltan el nombre de usuario o la contraseña"}), 400
+
+
     username = data.get("username")
     password = data.get("password")
     user = users.get(username)
