@@ -37,18 +37,19 @@ def username_funct(username):
 @app.route('/add_user', methods=['POST'])
 def Post_req():
     data = request.get_json()
-    username = data.get('username')
     
-    if username is None:
+    if not data or "username" not in data:
         return jsonify({"error": "Username is required"}), 400
 
+    username = data.get('username')
+    
     if username in dictionary_usr:
         return jsonify({"error": "The user already exists"}), 400
 
     dictionary_usr[username] = {
-            "name": data.get('name'),
-            "age": data.get('age'),
-            "city": data.get('city')
+            "name": data.get("name", ""),
+            "age": data.get("age", 0),
+            "city": data.get("city", "")
             }
 
     return jsonify({
