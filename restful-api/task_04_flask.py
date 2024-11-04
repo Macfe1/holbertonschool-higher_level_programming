@@ -26,11 +26,10 @@ def okay_status():
 @app.route('/users/<username>')
 def username_funct(username):
 
-    usern = dictionary_usr(username)
-
+    usern = dictionary_usr.get(username)
+    
     if usern:
         return jsonify(usern)
-
     else:
         return jsonify({"error": "User not found"}), 404
 
