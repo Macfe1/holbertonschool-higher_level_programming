@@ -17,6 +17,10 @@ if __name__ == "__main__":
     ordered by 'id' in ascending order.
     """
 
+    if len(sys.argv) != 5:
+        print("Must be exactly 4 arguments")
+        sys.exit(1)
+
     mysql_user = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
