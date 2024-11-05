@@ -30,12 +30,9 @@ if __name__ == "__main__":
                 passwd=mysql_password,
                 db=database_name,
                 )
-    except MySQLdb.OperationalError as e:
-        print(f"Error connecting to database: {e}")
 
-    cursor = db.cursor()
+        cursor = db.cursor()
 
-    try:
         query = ("SELECT * FROM states WHERE name = %s ORDER BY id ASC")
         cursor.execute(query, (state_name,))
 
@@ -45,7 +42,7 @@ if __name__ == "__main__":
             print(iter_state)
 
     except MySQLdb.Error as e:
-        print(f"Error executing query: {e}")
+        print(f"Error: {e}")
 
     finally:
         cursor.close()
