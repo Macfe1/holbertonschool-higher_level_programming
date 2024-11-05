@@ -3,26 +3,18 @@
 import MySQLdb
 import sys
 
+if __name__ == "__main__":
 
-def list_states(username, password, db_name):
-    """
-    Connects to the MySQL database and lists all states ordered by id.
-
-    Args:
-        username (str): The username for the database connection.
-        password (str): The password for the database connection.
-        db_name (str): The name of the database to connect to.
-
-    Returns:
-        None: Prints the states to the console.
-    """
+    mysql_user = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
 
     db = MySQLdb.connect(
             host="localhost",
-            user=username,
-            passwd=password,
-            db=db_name,
-            port=3306
+            port=3306,
+            user=mysql_user,
+            passwd=mysql_password,
+            db=database_name,
             )
 
     cursor = db.cursor()
@@ -31,19 +23,8 @@ def list_states(username, password, db_name):
 
     states = cursor.fetchall()
 
-    for state in states:
-        print(state)
+    for iter_state in states:
+        print(iter_state)
 
     cursor.close()
     db.close()
-
-
-if __name__ == "__main__":
-    if len(sys.argv) == 4:
-        username = sys.argv[1]
-        password = sys.argv[2]
-        db_name = sys.argv[3]
-        list_states(username, password, db_name)
-
-    else:
-        print("Usage: ./script.py username password db_name")
