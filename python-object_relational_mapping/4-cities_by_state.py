@@ -17,35 +17,37 @@ if __name__ == "__main__":
     ordered by 'id' in ascending order.
     """
 
-    if len(sys.argv) != 5:
-        print("Must be exactly 4 arguments")
+    if len(sys.argv) != 4:
+        print("Must be 4 arguments")
         sys.exit(1)
 
     mysql_user = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
 
-    try:
-        db = MySQLdb.connect(
-                host="localhost",
-                port=3306,
-                user=mysql_user,
-                passwd=mysql_password,
-                db=database_name
-                )
+    db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=mysql_user,
+            passwd=mysql_password,
+            db=database_name
+            )
 
-        cursor = db.cursor()
+    cursor = db.cursor()
 
-        cursor.execute("SELECT * FROM cities ORDER BY id ASC")
+    query = """
+            SELECT cities.id, cities.name, states.name
+            FROM cities
+            JOIN states ON cities.state_id = states.id
+            ORDER BY cities.id ASC
+            """
 
-        cities = cursor.fetchall()
+    cursor.execute(query)
 
-        for iter_city in cities:
-            print(iter_city)
+    cities = cursor.fetchall()
 
-    except MySQLdb.Error as e:
-        print(f"Error: {e}")
+    for iter_city in cities:
+        print(iter_city)
 
-    finally:
-        cursor.close()
-        db.close()
+    cursor.close()
+    db.close()
