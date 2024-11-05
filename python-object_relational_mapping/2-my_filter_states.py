@@ -39,10 +39,11 @@ if __name__ == "__main__":
         query = ("SELECT * FROM states WHERE name = %s ORDER BY id ASC")
         cursor.execute(query, (state_name,))
 
-    states = cursor.fetchall()
+        states = cursor.fetchall()
 
-    for iter_state in states:
-        print(iter_state)
+        for iter_state in states:
+            print(iter_state)
+
     except MySQLdb.Error as e:
         print(f"Error executing query: {e}")
 
