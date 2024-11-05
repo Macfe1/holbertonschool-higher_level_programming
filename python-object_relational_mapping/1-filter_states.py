@@ -2,8 +2,8 @@
 """
 This script connects to a MySQL database using credentials.
 It retrieves and displays all states from the 'states' table
-where the name starts with 'N',
-ordered by their 'id' in ascending order.
+where the name starts with 'N',ordered by their 'id'
+in ascending order.
 """
 
 import MySQLdb
@@ -11,12 +11,14 @@ import sys
 
 if __name__ == "__main__":
     """
-    Retrieves MySQL credentials and the database
-    name from command-line arguments.
-    Connects to the specified MySQL database,
-    executes a query to select all states
-    whose names start with 'N', ordered by 'id'
-    in ascending order, and prints each result.
+    Main function:
+
+    Retrieves MySQL credentials and the database name
+    from command-line arguments.
+    Connects to the specified MySQL database on
+    localhost at port 3306, executes a query to select
+    all states whose names start with 'N', ordered
+    by 'id' in ascending order, and prints each result.
     """
 
     mysql_user = sys.argv[1]
