@@ -22,23 +22,30 @@ if __name__ == "__main__":
     database_name = sys.argv[3]
     state_name = sys.argv[4]
 
-    db = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=mysql_user,
-            passwd=mysql_password,
-            db=database_name,
-            )
+    try:
+        db = MySQLdb.connect(
+                host="localhost",
+                port=3306,
+                user=mysql_user,
+                passwd=mysql_password,
+                db=database_name,
+                )
+    except MySQLdb.OperationalError as e:
+        print(f"Error connecting to database: {e}")
 
     cursor = db.cursor()
 
-    query = ("SELECT * FROM states WHERE name = %s ORDER BY id ASC")
-    cursor.execute(query, (state_name,))
+    try:
+        query = ("SELECT * FROM states WHERE name = %s ORDER BY id ASC")
+        cursor.execute(query, (state_name,))
 
     states = cursor.fetchall()
 
     for iter_state in states:
         print(iter_state)
+    except MySQLdb.Error as e:
+        print(f"Error executing query: {e}")
 
-    cursor.close()
-    db.close()
+    finally:
+        cursor.close()
+        db.close()
