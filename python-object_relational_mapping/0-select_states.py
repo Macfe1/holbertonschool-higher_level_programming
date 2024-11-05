@@ -1,9 +1,18 @@
 #!/usr/bin/python3
+"""
+This script connects to a MySQL database and retrieves all states
+from the 'states' table, displaying them in ascending order by id.
+"""
 
 import MySQLdb
 import sys
 
 if __name__ == "__main__":
+    """
+    The main function of the script. It retrieves MySQL credentials
+    from command line arguments, connects to the specified database,
+    executes a query to retrieve all states, and prints them.
+    """
 
     mysql_user = sys.argv[1]
     mysql_password = sys.argv[2]
