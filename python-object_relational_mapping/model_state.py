@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """
+This script defines a SQLAlchemy model for a 'State' and creates the
+associated table in a MySQL database if it does not already exist.
 """
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -9,6 +11,7 @@ Base = declarative_base()
 
 
 class State(Base):
+     """Represents a state for a MySQL database."""
 
     __tablename__ = 'states'
 
