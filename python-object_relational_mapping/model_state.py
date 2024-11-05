@@ -11,7 +11,8 @@ Base = declarative_base()
 
 
 class State(Base):
-     """Represents a state for a MySQL database."""
+
+    """Represents a state for a MySQL database."""
 
     __tablename__ = 'states'
 
