@@ -3,7 +3,7 @@ import os
 def generate_invitations(template, attendees):
 
     if not isinstance(template, str):
-        raise TypeError("Error: template must be a string.")
+        print("Error: template must be a string.")
         return
 
     if not isinstance(attendees, list) or not all(isinstance(a, dict) for a in attendees):
