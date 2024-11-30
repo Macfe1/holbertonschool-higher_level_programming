@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import json, csv, os
+import json, csv
 
 app = Flask(__name__)
 
@@ -19,8 +19,9 @@ def products():
     elif source == 'csv':
         try:
             with open('products.csv', 'r') as csv_file:
-                reader = csv.reader(csv_file)
+                reader = csv.DictReader(csv_file)
                 python_file = [row for row in reader]
+                print(python_file)
 
         except FileNotFoundError:
             return render_template('product_display.html', error_message="CSV file not found")
@@ -29,9 +30,9 @@ def products():
         return render_template('product_display.html', error_message="Wrong source")
 
     if id:
-        python_file = [product for product in python_file if str(product['id']) == id]
+        python_file = [product for product in python_file if str(product['id']) ==  str(id)]
         if not python_file:
-            return render_template('product_display.html', error_message="Product not found")
+            return render_template('product_display.html', error_message="Failed: Product not found in CSV source")
 
     return render_template('product_display.html', products=python_file)
 
