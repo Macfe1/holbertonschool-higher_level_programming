@@ -11,16 +11,20 @@
         <p>{{ error_message }}</p>
     {% else %}
         <table>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Price</th>
-            </tr>
-            {% for product in products %}
-                <td>{{ product.name }}</td>
-                <td>{{ product.category }}</td>
-                <td>{{ product.price }}</td>
-            {% endfor %}
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.price }}</td>
+                {% endfor %}
+            </tbody>
     </table>
     {% endif %}
 </body>
