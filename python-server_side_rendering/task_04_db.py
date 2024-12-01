@@ -13,13 +13,17 @@ def create_database():
             price REAL NOT NULL  
         )
     ''')
-    cursor.execute('''
-           INSERT INTO Products (id, name, category, price)
-           VALUES
-           (1, 'Laptop', 'Electronics', 799.99),
-           (2, 'Coffee Mug', 'Home Goods', 15.99)
-       ''')
-    conn.commit()
+    cursor.execute('SELECT COUNT(*) FROM Products')
+    count = cursor.fetchone()[0]
+
+    if count == 0:
+        cursor.execute('''
+            INSERT INTO Products (id, name, category, price)
+            VALUES
+            (1, 'Laptop', 'Electronics', 799.99),
+            (2, 'Coffee Mug', 'Home Goods', 15.99)
+        ''')
+        conn.commit()
     conn.close()
 
 app = Flask(__name__)
@@ -51,10 +55,10 @@ def products():
         try:
             conn = sqlite3.connect('products.db')
             cursor = conn.cursor()
-            cursor.execute('SELECT name, category, price FROM products')
+            cursor.execute('SELECT id, name, category, price FROM Products')
             rows = cursor.fetchall()
             python_file = [
-                {'name': row[0], 'category': row[1], 'price': row[2]}
+                {'id': row[0], 'name': row[1], 'category': row[2], 'price': row[3]}
                 for row in rows
             ]
         except sqlite3.Error as error:
