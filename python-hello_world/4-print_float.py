@@ -12,4 +12,4 @@ try:
     else:
         print("ValueError: Unknown format code 'f' for object of type 'str'")
 except (TypeError, ValueError) as print_err:
-    print(f"Error to print: {print_err}")
+    print(f"Error to print: {print_err}"
