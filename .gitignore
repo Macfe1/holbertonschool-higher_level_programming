@@ -1,0 +1,50 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Entornos/virtualenvs
+.env
+.env.*
+.venv/
+venv/
+env/
+
+# Bases de datos y archivos binarios
+*.db
+*.sqlite3
+*.sqlite
+*.pkl
+
+# Logs / dumps
+*.log
+*.tmp
+*.cache
+*.swp
+*.swo
+
+# --- JavaScript / Frontend ---
+node_modules/
+dist/
+build/
+coverage/
+
+# --- Herramientas/IDE ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
